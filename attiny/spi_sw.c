@@ -5,6 +5,35 @@
  */
 /*
  * Software SPI implementation (spi.h) for ATTiny
+ *
+ * ATMEL ATTINY45
+ *
+ *              +-\/-+
+ *        PB5  1|    |8  Vcc
+ * SPI CS PB3  2|    |7  PB2 SPI CLK
+ *        PB4  3|    |6  PB1 SPI MISO
+ *        GND  4|    |5  PB0 SPI MOSI
+ *              +----+
+ *
+ * Communicate with Winbond W25Q80BV SPI Flash.
+ *
+ *          SPI Flash
+ *           +-\/-+
+ * /CS      1|    |8  Vcc
+ *  DO(IO1) 2|    |7  /HOLD(IO3)
+ * /WP(IO2) 3|    |6  CLK
+ * GND      4|    |5  DI(IO0)
+ *           +----+
+ *
+ * ATtiny45          W25Q80BV
+ * 2 PB3(CS)  ----   1 (CS)
+ * 5 PB0(MOSI)----   5 (DI)
+ * 6 PB1(MISO)----   2 (DO)
+ * 7 PB2(SCK) ----   6 (CLK)
+ *      Vcc   ----   8 (Vcc)  3.3V !
+ *      GND   ----   4 (GND)
+ *      Vcc -[2.7kΩ]-7 (HOLD)  Pull high!
+ *             n.c.  3 (WP)
  */
 
 /* Default pin configuration */
