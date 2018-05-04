@@ -113,9 +113,9 @@ void spiflash_erase64k(uint32_t addr) {
 }
 
 
-void spiflash_chip_erase(uint32_t addr) {
+void spiflash_chip_erase(void) {
 	spiflash_write_enable();
-	spiflash_cmd_addr_start(W25Q80BV_CMD_CHIP_ERASE, addr);
+	spiflash_cmd_start(W25Q80BV_CMD_CHIP_ERASE);
 	spiflash_end_wait();
 }
 

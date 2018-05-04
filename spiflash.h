@@ -97,7 +97,7 @@ void spiflash_read_end(void) {
 void spiflash_erase4k(uint32_t addr);
 void spiflash_erase32k(uint32_t addr);
 void spiflash_erase64k(uint32_t addr);
-void spiflash_chip_erase(uint32_t addr);
+void spiflash_chip_erase(void);
 
 
 /*
