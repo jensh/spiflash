@@ -63,6 +63,10 @@ void spiflash_write(uint8_t val) {
 void spiflash_write_uint16(uint16_t val);
 void spiflash_write_uint32(uint32_t val);
 
+// little-endian write
+void spiflash_write_uint16_le(uint16_t val);
+void spiflash_write_uint32_le(uint32_t val);
+
 
 static inline
 void spiflash_write_end(void) {
@@ -78,6 +82,10 @@ void spiflash_read_start(uint32_t addr);
 uint8_t spiflash_read_uint8(void);
 uint16_t spiflash_read_uint16(void);
 uint32_t spiflash_read_uint32(void);
+
+// little-endian read
+uint16_t spiflash_read_uint16_le(void);
+uint32_t spiflash_read_uint32_le(void);
 
 static inline
 uint8_t spiflash_read(void) {

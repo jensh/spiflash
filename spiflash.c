@@ -80,6 +80,16 @@ uint32_t spiflash_read_uint32(void) {
 }
 
 
+uint16_t spiflash_read_uint16_le(void) {
+	return spiflash_read_uint8() | (uint16_t)spiflash_read_uint8() << 8;
+}
+
+
+uint32_t spiflash_read_uint32_le(void) {
+	return spiflash_read_uint16_le() | (uint32_t)spiflash_read_uint16_le() << 16;
+}
+
+
 void spiflash_write_uint16(uint16_t val) {
 	spiflash_write_uint8(val >> 8);
 	spiflash_write_uint8(val);
@@ -89,6 +99,18 @@ void spiflash_write_uint16(uint16_t val) {
 void spiflash_write_uint32(uint32_t val) {
 	spiflash_write_uint16(val >> 16);
 	spiflash_write_uint16(val);
+}
+
+
+void spiflash_write_uint16_le(uint16_t val) {
+	spiflash_write_uint8(val);
+	spiflash_write_uint8(val >> 8);
+}
+
+
+void spiflash_write_uint32_le(uint32_t val) {
+	spiflash_write_uint16_le(val);
+	spiflash_write_uint16_le(val >> 16);
 }
 
 
