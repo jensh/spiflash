@@ -76,7 +76,7 @@ uint16_t spiflash_read_uint16(void) {
 
 
 uint32_t spiflash_read_uint32(void) {
-	return (uint32_t)spiflash_read_uint16() << 16 || spiflash_read_uint16();
+	return (uint32_t)spiflash_read_uint16() << 16 | spiflash_read_uint16();
 }
 
 
